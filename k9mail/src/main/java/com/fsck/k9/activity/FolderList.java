@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Locale;
 
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
+import android.support.v7.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -260,7 +260,7 @@ public class FolderList extends K9ListActivity {
         }
 
         mActionBarProgressView = getActionBarProgressView();
-        mActionBar = getActionBar();
+        mActionBar = getSupportActionBar();
         initializeActionBar();
         setContentView(R.layout.folder_list);
         mListView = getListView();
@@ -345,7 +345,7 @@ public class FolderList extends K9ListActivity {
         mAdapter = new FolderListAdapter();
         restorePreviousData();
 
-        setListAdapter(mAdapter);
+        getListView().setAdapter(mAdapter);
         getListView().setTextFilterEnabled(mAdapter.getFilter() != null); // should never be false but better safe then sorry
     }
 
@@ -360,7 +360,7 @@ public class FolderList extends K9ListActivity {
     }
 
 
-    @Override public Object onRetainNonConfigurationInstance() {
+    @Override public Object onRetainCustomNonConfigurationInstance() {
         return (mAdapter == null) ? null : mAdapter.mFolders;
     }
 

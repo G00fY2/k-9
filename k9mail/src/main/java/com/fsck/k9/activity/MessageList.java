@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
+import android.support.v7.app.ActionBar;
 import android.app.FragmentManager;
 import android.app.FragmentManager.OnBackStackChangedListener;
 import android.app.FragmentTransaction;
@@ -542,7 +542,7 @@ public class MessageList extends K9Activity implements MessageListFragmentListen
     }
 
     private void initializeActionBar() {
-        mActionBar = getActionBar();
+        mActionBar = getSupportActionBar();
 
         mActionBar.setDisplayShowCustomEnabled(true);
         mActionBar.setCustomView(R.layout.actionbar_custom);

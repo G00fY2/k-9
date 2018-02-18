@@ -40,7 +40,7 @@ public class ChooseIdentity extends K9ListActivity {
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
 
-        setListAdapter(adapter);
+        getListView().setAdapter(adapter);
         setupClickListeners();
     }
 

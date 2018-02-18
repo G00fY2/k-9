@@ -1,6 +1,6 @@
 package com.fsck.k9.activity;
 
-import android.app.ListActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -12,9 +12,10 @@ import com.fsck.k9.activity.K9ActivityCommon.K9ActivityMagic;
 import com.fsck.k9.activity.misc.SwipeGestureDetector.OnSwipeGestureListener;
 
 
-public abstract class K9ListActivity extends ListActivity implements K9ActivityMagic {
+public abstract class K9ListActivity extends AppCompatActivity implements K9ActivityMagic {
 
     private K9ActivityCommon mBase;
+    private ListView listView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -75,5 +76,12 @@ public abstract class K9ListActivity extends ListActivity implements K9ActivityM
         }
 
         return super.onKeyUp(keyCode, event);
+    }
+
+    public ListView getListView() {
+        if (listView == null) {
+          listView = ((ListView) findViewById(android.R.id.list));
+        }
+        return listView;
     }
 }
