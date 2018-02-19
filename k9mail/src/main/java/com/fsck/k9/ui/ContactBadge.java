@@ -19,7 +19,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
-import android.widget.ImageView;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 /**
@@ -28,7 +28,7 @@ import android.widget.ImageView;
  * Based on QuickContactBadge:
  * https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/widget/QuickContactBadge.java
  */
-public class ContactBadge extends ImageView implements OnClickListener {
+public class ContactBadge extends CircleImageView implements OnClickListener {
     private static final int TOKEN_EMAIL_LOOKUP = 0;
     private static final int TOKEN_EMAIL_LOOKUP_AND_TRIGGER = 1;
 

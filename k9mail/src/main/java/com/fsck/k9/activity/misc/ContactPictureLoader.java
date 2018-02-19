@@ -1,6 +1,8 @@
 package com.fsck.k9.activity.misc;
 
 
+import android.graphics.Typeface;
+import android.os.Build;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.regex.Matcher;
@@ -66,16 +68,22 @@ public class ContactPictureLoader {
      * @see <a href="http://developer.android.com/design/style/color.html">Color palette used</a>
      */
     private final static int CONTACT_DUMMY_COLORS_ARGB[] = {
-        0xff33B5E5,
-        0xffAA66CC,
-        0xff99CC00,
-        0xffFFBB33,
-        0xffFF4444,
-        0xff0099CC,
-        0xff9933CC,
-        0xff669900,
-        0xffFF8800,
-        0xffCC0000
+        0xffE06055,
+        0xffAED581,
+        0xffF6BF26,
+        0xff9E9E9E,
+        0xff9FA8DA,
+        0xff4DB6AC,
+        0xff7986CB,
+        0xffBA68C8,
+        0xffFF8A65,
+        0xff4DD0E1,
+        0xff5E97F6,
+        0xff91A4AE,
+        0xff9575CD,
+        0xffFFA726,
+        0xff57BB8A,
+        0xff90A4AE
     };
 
     @VisibleForTesting
@@ -194,7 +202,10 @@ public class ContactPictureLoader {
         paint.setAntiAlias(true);
         paint.setStyle(Style.FILL);
         paint.setARGB(255, 255, 255, 255);
-        paint.setTextSize(mPictureSizeInPx * 3 / 4); // just scale this down a bit
+        paint.setTextSize(mPictureSizeInPx * 3 / 5); // just scale this down a bit
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            paint.setTypeface(Typeface.create("sans-serif-light", Typeface.NORMAL));
+        }
         Rect rect = new Rect();
         paint.getTextBounds(letter, 0, 1, rect);
         float width = paint.measureText(letter);

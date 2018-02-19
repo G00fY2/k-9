@@ -49,7 +49,6 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="4dp"
             android:src="@drawable/ic_contact_picture"
-            style="?android:attr/quickContactBadgeStyleWindowLarge"
             android:background="@android:color/transparent"/>
 
 
