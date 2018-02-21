@@ -179,4 +179,8 @@
     </style>
 
     <style name="Theme.K9.Transparent" parent="@android:style/Theme.NoDisplay" />
+
+    <style name="Theme.K9.Light.Common.Progressbar">
+        <item name="colorAccent">#ffffff</item>
+    </style>
 </resources>
