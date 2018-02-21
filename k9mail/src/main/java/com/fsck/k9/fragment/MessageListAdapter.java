@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.format.DateUtils;
@@ -201,6 +202,8 @@ public class MessageListAdapter extends CursorAdapter {
             String preview = getPreview(cursor);
             messageStringBuilder.append(" ").append(preview);
         }
+        boolean sansSerif = Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN;
+        if (sansSerif) holder.preview.setTypeface(Typeface.create("sans-serif-light", Typeface.NORMAL));
         holder.preview.setText(messageStringBuilder, TextView.BufferType.SPANNABLE);
 
         formatPreviewText(holder.preview, beforePreviewText, sigil);
@@ -208,7 +211,8 @@ public class MessageListAdapter extends CursorAdapter {
         Drawable statusHolder = buildStatusHolder(forwarded, answered);
 
         if (holder.from != null ) {
-            holder.from.setTypeface(Typeface.create(holder.from.getTypeface(), maybeBoldTypeface));
+            holder.from.setTypeface(sansSerif ? Typeface.create("sans-serif-light", maybeBoldTypeface) :
+                Typeface.create(holder.from.getTypeface(), maybeBoldTypeface));
             if (fragment.senderAboveSubject) {
                 holder.from.setCompoundDrawablesWithIntrinsicBounds(
                         statusHolder, // left
@@ -230,7 +234,8 @@ public class MessageListAdapter extends CursorAdapter {
                         null); // bottom
             }
 
-            holder.subject.setTypeface(Typeface.create(holder.subject.getTypeface(), maybeBoldTypeface));
+            holder.subject.setTypeface(sansSerif ? Typeface.create("sans-serif-light", maybeBoldTypeface) :
+                Typeface.create(holder.subject.getTypeface(), maybeBoldTypeface));
             holder.subject.setText(subject);
         }
         holder.date.setText(displayDate);
